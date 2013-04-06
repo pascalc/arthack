@@ -59,13 +59,12 @@
   ([3 [w1 w2 w3]]
     (fresh [f]
       (trigramo f w1 w2 w3)))
-  ([len [w1 w2 w3 . ws]]
-    (fresh [f1 f2 res]
-      (bigramo f1 w1 w2)
-      (bigramo f2 w2 w3)
+  ([len [w1 w2 . ws]]
+    (fresh [f res]
+      (bigramo f w1 w2)
       (project [len]
-        (conso w3 ws res)
-        (sentenceo (- len 2) res)))))
+        (conso w2 ws res)
+        (sentenceo (dec len) res)))))
 
 ;; Functional wrapper
 
